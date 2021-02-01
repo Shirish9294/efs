@@ -1,0 +1,18 @@
+{% extends "portfolio/base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}Reset your password{% endblock %}
+{% block content %}
+ <h1 style="color: azure" >Reset your password</h1>
+ {% if validlink %}
+ <p style="color: azure">Please enter your new password:</p>
+ <form method="post" style="color: azure">
+ {{ form|crispy }}
+ {% csrf_token %}
+ <p><input type="submit" value="Change my password" style="color: black"/></p>
+ </form>
+ {% else %}
+ <p style="color: azure">The password reset link was invalid, possibly because it has
+already been used. Please request a new password reset.</p>
+ {% endif %}
+{% endblock %}
